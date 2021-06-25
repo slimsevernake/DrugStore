@@ -1,0 +1,47 @@
+﻿@model DrugStore.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "DrugStore: Ваша корзина";
+}
+
+<h2>Ваша корзина</h2>
+<table width="90%" align="center">
+    <thead>
+        <tr>
+            <th align="center">Quantity</th>
+            <th align="left">Item</th>
+            <th align="right">Price</th>
+            <th align="right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+        <tr>
+            <td align="center">@line.Quantity</td>
+            <td align="left">@line.Drug.Name</td>
+            <td align="right">@line.Drug.Price.ToString("c")</td>
+            <td align="right">@((line.Quantity * line.Drug.Price).ToString("c"))</td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "Cart", new { id = line.Id }))
+                {
+                    @Html.Hidden("Id", line.Drug.Id)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input class="actionButtons" type="submit" value="Remove" />
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" align="right">Total:</td>
+            <td align="right">
+                @Model.Cart.ComputeTotalValue().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<p align="center" class="actionButtons">
+    <a href="@Url.Action("Index", "Drugs")">Continue shopping</a>
+</p>

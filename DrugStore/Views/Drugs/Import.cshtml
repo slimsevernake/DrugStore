@@ -1,0 +1,130 @@
+﻿@using DrugStore.Models.Entities
+@model Drug
+
+@*@model IEnumerable<Pharmacy.Models.Drug>*@
+
+@{
+    ViewBag.Title = "Import";
+    // Layout = "~/Views/Drugs/Index.cshtml";
+}
+
+<h2>List Drugs</h2>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Batch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelfLife)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InStock)
+            </th>
+            <th></th>
+        </tr>
+
+        @for (var item=0; item < 42; item++)
+        {
+            <tr>
+                <td>
+                     item.Name
+                </td>
+                <td>
+                    item.Manufacturer
+                </td>
+                <td>
+                    item.Price
+                </td>
+                <td>
+                    item.Batch
+                </td>
+                <td>
+                    item.ShelfLife
+                </td>
+                <td>
+                    item.InStock
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+
+<table class="pharmacy" border=0>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Batch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShelfLife)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InStock)
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.drugs)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Manufacturer</td>
+            <td>@item.Price</td>
+            <td>@item.Batch</td>
+            <td>@item.ShelfLife</td>
+            <td>@item.InStock</td>
+            @* <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>*@
+        </tr>
+    }
+
+</table>
+<p>
+@Html.ActionLink("Back to List", "Index")
+</p>
+
+@*<div class="pharmacy">
+    <div class="drugs">
+        @foreach (var item in ViewBag.drugs)
+        {
+             <span >@item.Id </span>
+            <div>@item.Name </div>
+            <div>@item.Manufacturer </div>
+            <div>@item.Price </div>
+             <span >@item.Batch </span>
+             <span >@item.ShelfLife </span>
+            <div>@item.InStock </div>
+
+        }
+    </div>
+
+    </div>*@
+
