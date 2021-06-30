@@ -1,5 +1,6 @@
 ﻿@model DrugStore.Models.CartIndexViewModel
 
+
 @{
     ViewBag.Title = "DrugStore: Ваша корзина";
 }
@@ -17,20 +18,20 @@
     <tbody>
         @foreach (var line in Model.Cart.Lines)
         {
-        <tr>
-            <td align="center">@line.Quantity</td>
-            <td align="left">@line.Drug.Name</td>
-            <td align="right">@line.Drug.Price.ToString("c")</td>
-            <td align="right">@((line.Quantity * line.Drug.Price).ToString("c"))</td>
-            <td>
-                @using (Html.BeginForm("RemoveFromCart", "Cart", new { id = line.Id }))
-                {
-                    @Html.Hidden("Id", line.Drug.Id)
-                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                    <input class="actionButtons" type="submit" value="Remove" />
-                }
-            </td>
-        </tr>
+            <tr>
+                <td align="center">@line.Quantity</td>
+                <td align="left">@line.Drug.Name</td>
+                <td align="right">@line.Drug.Price.ToString("c")</td>
+                <td align="right">@((line.Quantity * line.Drug.Price).ToString("c"))</td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart", new { id = line.Id }))
+                    {
+                        @Html.Hidden("Id", line.Drug.Id)
+                        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                        <input class="actionButtons" type="submit" value="Remove" />
+                    }
+                </td>
+            </tr>
         }
     </tbody>
     <tfoot>
@@ -43,5 +44,8 @@
     </tfoot>
 </table>
 <p align="center" class="actionButtons">
-    <a href="@Url.Action("Index", "Drugs")">Continue shopping</a>
+    @*@ @using (Html.BeginForm("DeleteConfirmed", "Drugs", new { id = Model.Drug.Id }))
+    {*@
+        <a href="@Url.Action("Index", "Drugs")">Continue shopping</a>
+    @*} *@
 </p>

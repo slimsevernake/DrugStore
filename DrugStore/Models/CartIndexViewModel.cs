@@ -9,6 +9,7 @@ namespace DrugStore.Models
     public class CartIndexViewModel
     {
         public Cart Cart { get; set; }
+        public Drug Drug { get; set; }
         public string ReturnUrl { get; set; }
         public CartIndexViewModel()
         {

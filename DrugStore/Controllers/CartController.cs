@@ -49,6 +49,9 @@ namespace DrugStore.Controllers
         if (drug != null)
             {
                 GetCart().AddItem(drug, 1);
+                drug.InStock = drug.InStock - 1;
+       
+                db.SaveChanges();
             }
             return RedirectToAction("CartIndex", new{returnUrl });
         }
