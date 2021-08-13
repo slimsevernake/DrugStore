@@ -46,12 +46,19 @@ namespace DrugStore.Controllers
         {
             Drug drug = db.Drugs.Find(Id);
             
-        if (drug != null)
+        if (drug != null && drug.InStock > 0)
             {
                 GetCart().AddItem(drug, 1);
-                drug.InStock = drug.InStock - 1;
-       
-                db.SaveChanges();
+               
+                    drug.InStock = drug.InStock - 1;
+
+                    db.SaveChanges();
+                
+            }
+            else
+            {
+                TempData["notice"] = "Препарат остутствует на складе";
+              
             }
             return RedirectToAction("CartIndex", new{returnUrl });
         }
@@ -64,6 +71,9 @@ namespace DrugStore.Controllers
             if (drug != null)
             {
                 GetCart().RemoveLine(drug);
+                drug.InStock = drug.InStock + 1;
+
+                db.SaveChanges();
             }
             return RedirectToAction("CartIndex", new { returnUrl });
         }

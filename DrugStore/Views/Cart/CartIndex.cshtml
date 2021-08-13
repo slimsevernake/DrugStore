@@ -44,8 +44,10 @@
     </tfoot>
 </table>
 <p align="center" class="actionButtons">
-    @*@ @using (Html.BeginForm("DeleteConfirmed", "Drugs", new { id = Model.Drug.Id }))
-    {*@
-        <a href="@Url.Action("Index", "Drugs")">Continue shopping</a>
-    @*} *@
+
+    <a href="@Url.Action("Index", "Drugs")">Continue shopping</a>
 </p>
+@if (TempData["notice"] != null)
+{
+    <p>@TempData["notice"]</p>
+}
