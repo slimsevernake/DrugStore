@@ -11,5 +11,6 @@ namespace DrugStore.Models.DTO
         public string Batch { get; set; } // серия препарата
         public DateTime ShelfLife { get; set; }
         public double InStock { get; set; }
+  //      public decimal QuantityForSale { get; set; }
     }
 }

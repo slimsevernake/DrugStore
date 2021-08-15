@@ -17,6 +17,7 @@ using ClosedXML.Excel;
 
 namespace DrugStore.Controllers
 {
+    [Authorize]
     public class DrugsController : Controller
     {
         // GET: Drugs

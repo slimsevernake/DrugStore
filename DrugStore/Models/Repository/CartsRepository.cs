@@ -23,11 +23,6 @@ namespace DrugStore.Models.Repository
         public override void Update(Cart item)
         {
             var purchase = Get(item.Id);
-            //purchase.DateBuy = item.DateBuy;
-            //purchase.Amount = item.Amount;
-            //purchase.Count = item.Count;
-            //purchase.DrugId = item.DrugId;
-            //purchase.ClientId = item.ClientId;
         }
 
 

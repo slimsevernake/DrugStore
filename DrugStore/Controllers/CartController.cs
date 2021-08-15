@@ -10,6 +10,7 @@ using DrugStore.Models;
 
 namespace DrugStore.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         // GET: Purchase
@@ -41,16 +42,19 @@ namespace DrugStore.Controllers
             }
             return cart;
         }
-        
-        public ActionResult AddToCart(int? Id, string returnUrl)
+        [HttpPost]
+        public ActionResult AddToCart(int? Id, int? quantity, string returnUrl)
         {
+      
             Drug drug = db.Drugs.Find(Id);
-            
-        if (drug != null && drug.InStock > 0)
+           // decimal myQuantity = 0;
+           //// myQuantity = (decimal)quantity;
+           // myQuantity = 1;
+            if (drug != null && drug.InStock > 0)
             {
-                GetCart().AddItem(drug, 1);
+                GetCart().AddItem(drug, (int)quantity);
                
-                    drug.InStock = drug.InStock - 1;
+                    drug.InStock = (double)(drug.InStock - quantity);
 
                     db.SaveChanges();
                 
@@ -82,9 +86,5 @@ namespace DrugStore.Controllers
            
         }
 
-     /*   public ActionResult CartIndex()
-        {
-            return View();
-        }*/
     }
 }

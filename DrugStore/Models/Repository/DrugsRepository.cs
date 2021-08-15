@@ -33,6 +33,7 @@ namespace DrugStore.Models.Repository
             drug.Batch = item.Batch;
             drug.ShelfLife = item.ShelfLife;
             drug.InStock = item.InStock;
+           
         }
 
 

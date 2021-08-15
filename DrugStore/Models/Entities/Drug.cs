@@ -29,6 +29,27 @@ namespace DrugStore.Models.Entities
             }
         }
 
+        //public decimal _quantityForSale;
+        //public decimal QuantityForSale
+        //{
+        //    get
+        //    {
+        //        return _quantityForSale;
+        //    }
+
+        //    set
+        //    {
+        //        if (value > 0)
+        //        {
+        //            _quantityForSale = value;
+        //        }
+        //        else
+        //        {
+        //            _quantityForSale = 0;
+        //        }
+        //    }
+        //}
+
         public string Batch { get; set; } // серия препарата
         public DateTime ShelfLife { get; set; }
         public double InStock { get; set; }
@@ -39,7 +60,7 @@ namespace DrugStore.Models.Entities
             Batch = "";
             ShelfLife = new DateTime();
             InStock = 0;
-        }
+             }
 
         //public IEnumerator GetEnumerator()
         //{
