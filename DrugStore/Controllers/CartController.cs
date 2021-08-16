@@ -42,8 +42,8 @@ namespace DrugStore.Controllers
             }
             return cart;
         }
-        [HttpPost]
-        public ActionResult AddToCart(int? Id, int? quantity, string returnUrl)
+      //  [HttpPost]
+        public ActionResult AddToCart(int? Id, string returnUrl)
         {
       
             Drug drug = db.Drugs.Find(Id);
@@ -52,9 +52,9 @@ namespace DrugStore.Controllers
            // myQuantity = 1;
             if (drug != null && drug.InStock > 0)
             {
-                GetCart().AddItem(drug, (int)quantity);
+                GetCart().AddItem(drug, 1);
                
-                    drug.InStock = (double)(drug.InStock - quantity);
+                    drug.InStock = (double)(drug.InStock - 1);
 
                     db.SaveChanges();
                 

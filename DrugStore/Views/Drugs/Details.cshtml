@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Корзина";
-    int quantity = 1;
+    //int quantity = 1;
 }
 
 
@@ -66,21 +66,16 @@
 
 <div class="item">
 
-    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post, new { id = Model.Id, quantity2 = 1 }))
+    @using (Html.BeginForm("AddToCart", "Cart", new { id = Model.Id}))
     {
         @Html.HiddenFor(x => x.Name)
         @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-        <span>Введите количество препарата:  </span>
-
-
-        <input id="quantity2" name="quantity2" type="number" step="0.01" min="0" value="1.00" />
-
+        
         <input type="submit" class="btn btn-success" value="Добавить в корзину" />
     }
 
     <h4>@Model.Price.ToString("c")</h4>
 </div>
 <p>
-    @* @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>
